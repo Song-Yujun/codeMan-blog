@@ -20,7 +20,8 @@
             @focus="svgStatus = 'account'"
             @blur="svgStatus = 'common'"
             type="text"
-            placeholder="邮箱/手机号（国际号码加区号）"
+            :value="account"
+            placeholder="邮箱/手机号"
           />
         </div>
         <div class="password">
@@ -28,10 +29,11 @@
             @focus="svgStatus = 'password'"
             @blur="svgStatus = 'common'"
             type="password"
+            :value="password"
             placeholder="请输入密码"
           />
         </div>
-        <button class="submit">登 录</button>
+        <button class="submit" @click="login">登 录</button>
       </div>
     </div>
     <!-- 底部svg效果 -->
@@ -41,6 +43,7 @@
 
 <script>
 import LoginSvg from "@/components/loginSvg.vue";
+import { isEmpty } from "@/utils/index.js";
 export default {
   name: "InitPage",
   components: {
@@ -49,8 +52,17 @@ export default {
   data() {
     return {
       svgStatus: "common",
+      account: "",
+      password: "",
     };
   },
+  methods:{
+    login(){
+      // if(isEmpty(this.account)){
+      //   return 
+      // }
+    }
+  }
 };
 </script>
 
